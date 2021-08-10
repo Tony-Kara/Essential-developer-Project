@@ -11,6 +11,7 @@
 		04C8951726C2F76B00D6452F /* Essential_developer_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8951626C2F76B00D6452F /* Essential_developer_ProjectTests.swift */; };
 		04C8951926C2F76B00D6452F /* Essential_developer_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C8950B26C2F76A00D6452F /* Essential_developer_Project.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		04C8952326C2F7E300D6452F /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8952226C2F7E300D6452F /* FeedItem.swift */; };
+		04C8952526C2FA1000D6452F /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8952426C2FA1000D6452F /* FeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		04C8951626C2F76B00D6452F /* Essential_developer_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essential_developer_ProjectTests.swift; sourceTree = "<group>"; };
 		04C8951826C2F76B00D6452F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04C8952226C2F7E300D6452F /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		04C8952426C2FA1000D6452F /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				04C8950B26C2F76A00D6452F /* Essential_developer_Project.h */,
 				04C8950C26C2F76A00D6452F /* Info.plist */,
 				04C8952226C2F7E300D6452F /* FeedItem.swift */,
+				04C8952426C2FA1000D6452F /* FeedLoader.swift */,
 			);
 			path = "Essential developer Project";
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C8952526C2FA1000D6452F /* FeedLoader.swift in Sources */,
 				04C8952326C2F7E300D6452F /* FeedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
