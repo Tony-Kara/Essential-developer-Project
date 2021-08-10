@@ -10,6 +10,7 @@
 		04C8951226C2F76B00D6452F /* Essential_developer_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C8950826C2F76A00D6452F /* Essential_developer_Project.framework */; };
 		04C8951726C2F76B00D6452F /* Essential_developer_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8951626C2F76B00D6452F /* Essential_developer_ProjectTests.swift */; };
 		04C8951926C2F76B00D6452F /* Essential_developer_Project.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C8950B26C2F76A00D6452F /* Essential_developer_Project.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		04C8952326C2F7E300D6452F /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8952226C2F7E300D6452F /* FeedItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		04C8951126C2F76B00D6452F /* Essential developer ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Essential developer ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C8951626C2F76B00D6452F /* Essential_developer_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essential_developer_ProjectTests.swift; sourceTree = "<group>"; };
 		04C8951826C2F76B00D6452F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04C8952226C2F7E300D6452F /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				04C8950B26C2F76A00D6452F /* Essential_developer_Project.h */,
 				04C8950C26C2F76A00D6452F /* Info.plist */,
+				04C8952226C2F7E300D6452F /* FeedItem.swift */,
 			);
 			path = "Essential developer Project";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				TargetAttributes = {
 					04C8950726C2F76A00D6452F = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					04C8951026C2F76B00D6452F = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -194,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C8952326C2F7E300D6452F /* FeedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +345,7 @@
 		04C8951D26C2F76B00D6452F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -357,6 +363,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tony-kara.Essential-developer-Project";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -364,6 +371,7 @@
 		04C8951E26C2F76B00D6452F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -388,6 +396,7 @@
 		04C8952026C2F76B00D6452F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WT77VV47BZ;
@@ -406,6 +415,7 @@
 		04C8952126C2F76B00D6452F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WT77VV47BZ;
