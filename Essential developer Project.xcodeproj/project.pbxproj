@@ -77,8 +77,7 @@
 			children = (
 				04C8950B26C2F76A00D6452F /* Essential_developer_Project.h */,
 				04C8950C26C2F76A00D6452F /* Info.plist */,
-				04C8952226C2F7E300D6452F /* FeedItem.swift */,
-				04C8952426C2FA1000D6452F /* FeedLoader.swift */,
+				04C8952626C2FC1D00D6452F /* Feed Future */,
 			);
 			path = "Essential developer Project";
 			sourceTree = "<group>";
@@ -90,6 +89,15 @@
 				04C8951826C2F76B00D6452F /* Info.plist */,
 			);
 			path = "Essential developer ProjectTests";
+			sourceTree = "<group>";
+		};
+		04C8952626C2FC1D00D6452F /* Feed Future */ = {
+			isa = PBXGroup;
+			children = (
+				04C8952226C2F7E300D6452F /* FeedItem.swift */,
+				04C8952426C2FA1000D6452F /* FeedLoader.swift */,
+			);
+			path = "Feed Future";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
