@@ -19,7 +19,7 @@ public class RemoteFeedLoader {
  private  let url: URL
  private  let client : HTTPClient
 
-    
+                        // inject an instance of HTTPClient using dependency injection
    public init(url: URL, client: HTTPClient) {
         self.client = client
         self.url = url
@@ -27,5 +27,6 @@ public class RemoteFeedLoader {
     
   public  func load() {
         client.get(from: url)
+       
     }
 }
