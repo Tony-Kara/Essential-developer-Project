@@ -25,7 +25,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     }
     
     
-    func test_load_RequestDataFromURL(){
+    func test_load_RequestsDataFromURL(){
         // the idea is to request for URL throught the client
         
         let url = URL(string: "https://a-given-url.com")
