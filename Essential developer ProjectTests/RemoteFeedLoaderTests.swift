@@ -6,29 +6,10 @@
 //
 
 import XCTest
-
-class RemoteFeedLoader {
-    
-    let client : HTTPClient
-    let url: URL
-    
-    init(url: URL, client: HTTPClient) {
-        self.client = client
-        self.url = url
-    }
-    
-    func load() {
-        client.get(from: url)
-    }
-}
+import Essential_developer_Project
 
     // we do not want to requestedURL from HTTPClient in production code, this is for test purpose only, changing the singleton from let to var
     // ensure we have other possiblity which is to create a subclass of the http client, so we move the test logic from HTTPClient to HTTPClientSpy
-protocol HTTPClient {
-   
-    func get(from url: URL)
-
-}
 
 
 
