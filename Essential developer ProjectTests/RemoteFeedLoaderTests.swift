@@ -53,11 +53,11 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         let (sut, client) = makeSUT()
         client.error = NSError(domain: "Test", code: 0) // i created a stub of the instance "client" here
-        var capturedError: RemoteFeedLoader.Error? //enum Error is introduced to enable us bring in the ".connectivity" error from the FeedLoader Class, so i am checking                                          // if the capturedError is also of the type .connnectivity error.
+        var capturedErrors = [RemoteFeedLoader.Error]() //enum Error is introduced to enable us bring in the ".connectivity" error from the FeedLoader Class, so i am checking if the                // capturedError is also of the type .connnectivity error. The array is to ensure that we only receive one error.
                                                   
-        sut.load { error in capturedError = error }
+        sut.load { error in capturedErrors.append(error) }
         
-        XCTAssertEqual(capturedError, .connectivity) // Now, i will check to confirm that the error .connectivity is equal to the captured error when the sut.load                                                    // function is invoked
+        XCTAssertEqual(capturedErrors, [.connectivity]) // Now, i will check to confirm that the error .connectivity is equal to the captured error when the sut.load                                                    // function is invoked
     }
     
                                                                             //this is a turple, and i have to return it
