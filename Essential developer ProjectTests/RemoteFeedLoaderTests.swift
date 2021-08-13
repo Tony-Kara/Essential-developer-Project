@@ -52,12 +52,14 @@ class RemoteFeedLoaderTests: XCTestCase {
     func test_load_deliverErrorOnClientError(){
         
         let (sut, client) = makeSUT()
-        client.error = NSError(domain: "Test", code: 0) // i created a stub of the instance "client" here
+      // i created a stub of the instance "client" here
         var capturedErrors = [RemoteFeedLoader.Error]() //enum Error is introduced to enable us bring in the ".connectivity" error from the FeedLoader Class, so i am checking if the                // capturedError is also of the type .connnectivity error. The array is to ensure that we only receive one error.
                                                   
         sut.load { error in capturedErrors.append(error) }
+       let  clientError = NSError(domain: "Test", code: 0)
+        client.completions[0](clientError) // we invoke the completions array with the clientError.
         
-        XCTAssertEqual(capturedErrors, [.connectivity]) // Now, i will check to confirm that the error .connectivity is equal to the captured error when the sut.load                                                    // function is invoked
+        XCTAssertEqual(capturedErrors, [.connectivity]) // Now, i will check to confirm that the captured load error is equal to the .connectivity error when the sut.load                                                    // function is invoked
     }
     
                                                                             //this is a turple, and i have to return it
@@ -71,13 +73,13 @@ class RemoteFeedLoaderTests: XCTestCase {
    private class HTTPCLientSpy: HTTPClient { // this will not be part of production code, it serves as a means to pass in my url
     
     var requestedURLs = [URL]()
-    var error: Error?
+   
+    var completions = [(Error) -> Void]() // created an array of all the completion blocks passed, holding an annonymous function with is of Error datatype
     func get(from url: URL, completion: @escaping (Error) -> Void){
         
-        if let error = error {
-            completion(error) // this error value is from the stub we created.
-        }
-        
+        // we deleted an error from the client stub initially created to avoid stubbing.
+        completions.append(completion) // pass in the closure/completion received, i think we will receive all the errors here and add to the completions array, we are capturing values
+                                        // instead of stubbing
         requestedURLs.append(url)
         }
        
