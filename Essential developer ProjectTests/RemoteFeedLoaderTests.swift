@@ -26,7 +26,7 @@ class RemoteFeedLoaderTests: XCTestCase {
     
     
     func test_load_RequestsDataFromURL(){
-        // the idea is to request for URL throught the client
+        // the idea is to request data from the RemoteFeedLoader and the client will make use of a URL
         
         let url = URL(string: "https://a-given-url.com")
         let (sut, client)  = makeSUT(url: url!)
@@ -49,6 +49,17 @@ class RemoteFeedLoaderTests: XCTestCase {
         
     }
     
+    func test_load_deliverErrorOnClientError(){
+        
+        let (sut, client) = makeSUT()
+        client.error = NSError(domain: "Test", code: 0) // i created a stub of the instance "client" here
+        var capturedError: RemoteFeedLoader.Error? //enum Error is introduced to enable us bring in the ".connectivity" error from the FeedLoader Class, so i am checking                                          // if the capturedError is also of the type .connnectivity error.
+                                                  
+        sut.load { error in capturedError = error }
+        
+        XCTAssertEqual(capturedError, .connectivity) // Now, i will check to confirm that the error .connectivity is equal to the captured error when the sut.load                                                    // function is invoked
+    }
+    
                                                                             //this is a turple, and i have to return it
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeedLoader, client: HTTPCLientSpy) {
         
@@ -57,10 +68,16 @@ class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-   private class HTTPCLientSpy: HTTPClient { // this will not be part of production code
+   private class HTTPCLientSpy: HTTPClient { // this will not be part of production code, it serves as a means to pass in my url
     
     var requestedURLs = [URL]()
-    func get(from url: URL){
+    var error: Error?
+    func get(from url: URL, completion: @escaping (Error) -> Void){
+        
+        if let error = error {
+            completion(error) // this error value is from the stub we created.
+        }
+        
         requestedURLs.append(url)
         }
        
