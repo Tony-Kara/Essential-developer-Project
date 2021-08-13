@@ -56,8 +56,8 @@ class RemoteFeedLoaderTests: XCTestCase {
         var capturedErrors = [RemoteFeedLoader.Error]() //enum Error is introduced to enable us bring in the ".connectivity" error from the FeedLoader Class, so i am checking if the                // capturedError is also of the type .connnectivity error. The array is to ensure that we only receive one error.
                                                   
         sut.load { error in capturedErrors.append(error) }
-       let  clientError = NSError(domain: "Test", code: 0)
-        client.completions[0](clientError) // we invoke the completions array with the clientError.
+       let  clientError = NSError(domain: "Test", code: 0) // i create a NSError with a test domain
+        client.complete(with: clientError) // we invoke the complete function with the clientError, i thonk in this way, the errors are passes to the HTTP client
         
         XCTAssertEqual(capturedErrors, [.connectivity]) // Now, i will check to confirm that the captured load error is equal to the .connectivity error when the sut.load                                                    // function is invoked
     }
@@ -79,9 +79,15 @@ class RemoteFeedLoaderTests: XCTestCase {
         
         // we deleted an error from the client stub initially created to avoid stubbing.
         completions.append(completion) // pass in the closure/completion received, i think we will receive all the errors here and add to the completions array, we are capturing values
-                                        // instead of stubbing
+                                        // instead of only stubbing
         requestedURLs.append(url)
         }
+    
+    func complete(with error: Error, at index: Int = 0 ){
+        completions[index](error) // we get a completion block at the index and we invoke it wih the error
+    }
+    
+    
        
     }
 }
