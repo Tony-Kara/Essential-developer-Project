@@ -70,21 +70,30 @@ class RemoteFeedLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-   private class HTTPCLientSpy: HTTPClient { // this will not be part of production code, it serves as a means to pass in my url
+   private class HTTPCLientSpy: HTTPClient { // this will not be part of production code, it serves as a means to pass in my url, it's job is to capture messages
     
-    var requestedURLs = [URL]()
+    
    
-    var completions = [(Error) -> Void]() // created an array of all the completion blocks passed, holding an annonymous function with is of Error datatype
+     // created an array of all the completion blocks passed, holding an annonymous function with is of Error datatype. UPDATE!! code update here, former array removed.
+    
+    private var messages = [(url: URL, completion: (Error) -> Void)]() // create a turple here to capture both requested url and error
+    
+    var requestedURLs : [URL] {
+        return messages.map{ $0.url} // we will get only the url inside the messages array
+    }
+    
     func get(from url: URL, completion: @escaping (Error) -> Void){
         
         // we deleted an error from the client stub initially created to avoid stubbing.
-        completions.append(completion) // pass in the closure/completion received, i think we will receive all the errors here and add to the completions array, we are capturing values
+       // pass in the closure/completion received, i think we will receive all the errors here and add to the completions array, we are capturing values
                                         // instead of only stubbing
-        requestedURLs.append(url)
+        messages.append((url, completion))
+        
         }
     
     func complete(with error: Error, at index: Int = 0 ){
-        completions[index](error) // we get a completion block at the index and we invoke it wih the error
+        // we get a completion block at the index and we invoke it wih the error
+        messages[index].completion(error)
     }
     
     
