@@ -30,7 +30,7 @@ public class RemoteFeedLoader {
         self.url = url
     }
                                                     // pass in default statement to the closure so it other tests like test_load_RequestsDataFromURL does not break
-    public func load(completion: @escaping (Error) -> Void = { _ in }) {
+    public func load(completion: @escaping (Error) -> Void) {
         client.get(from: url) { error in // i noticed the error value is not used in the closure statement/ block or codes to run
             completion(.connectivity) // here, we are passing the domain error from the RemoteFeedLoader, closure is escaping leave the body of the function
         }
